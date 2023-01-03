@@ -1,0 +1,326 @@
+
+
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-0 col-sm-0 col-lg-3 col-xl-3 col-xxl-2 p-0">
+            <app-sidemenu class="sticky-top d-none d-lg-block"></app-sidemenu>
+        </div>
+        <div class="col-12 col-sm-12 col-lg-9 col-xl-9 col-xxl-10 mt-2">
+            <div class="content-wrapper">
+                <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+                    <ol _ngcontent-usv-c162="" class="breadcrumb">
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"><a _ngcontent-usv-c162=""
+                                routerlink="/login" ng-reflect-router-link="/login" href="/login">Landing Page</a>
+                        </li>
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a _ngcontent-usv-c162=""
+                                routerlink="/main" ng-reflect-router-link="/main" href="/main">Dashboard</a> </li>
+                        <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page"
+                            class="breadcrumb-item active">
+                            Pay Entitlement</li>
+                    </ol>
+                </nav>
+                <app-username></app-username>
+
+                <section class="content viewbottom">
+                    <div class="light-blue-bg p-4">
+                        <fieldset class="p-3">
+                            <legend class="mb-3">Pay Entitlement</legend>
+                            <form [formGroup]="PayEntitlement">
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Service Category </mat-label>
+                                            <select matNativeControl  (change)="getSubServiceCategory($event)" formControlName="service_Category">
+                                                <option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}> {{mst.SRVC_CAT_NAME_EN}} </option>
+                                              </select>
+                                
+                                        </mat-form-field>
+                                     
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Sub Service Category </mat-label>
+                                            <select matNativeControl  formControlName="serviceSub_Category">
+                                                <option *ngFor="let mst of SubServiceCategorydata" value={{mst.SRVC_SUBCAT_ID}}>
+                                                  {{mst.SUB_SRVC_CAT_NAME_EN }}
+                                                </option>
+                                              </select>
+                                
+                                        </mat-form-field>
+                                       
+                                    </div>
+
+                                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                    <mat-form-field class="w-100" appearance="outline">
+                                        <mat-label>Designation </mat-label>
+                                        <select matNativeControl formControlName="Designation"><option *ngFor="let mst of Designationdata" value={{mst.DESG_ID}}>{{mst.DESG_DESC_EN}}</option>
+                                        </select>
+                            
+                                    </mat-form-field>
+                                       
+                                    </div>
+
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Pay Commission</mat-label>
+                                            <select matNativeControl  formControlName="Commission">
+                                                <option *ngFor="let mst of PayCommisiondata" value={{mst.PAY_COMMISION_ID}}>
+                                                  {{mst.PAY_COMM_NAME_EN}}
+                                                </option>
+                                              </select>
+                                        </mat-form-field>
+                                       
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field #field floatLabel="always" class="w-100" appearance="outline"
+                                        class="full-width radio-container">
+                                        <input class="form-control" matInput [matDatepicker]="picker3" 
+                                            placeholder="DD/MM/YYYY"formControlName="dob" readonly="" formControlName="PayOptedDate">
+                                            <mat-datepicker-toggle matSuffix [for]="picker3" ></mat-datepicker-toggle>
+                                            <mat-datepicker #picker3 class="mat-piker"></mat-datepicker>
+                                    </mat-form-field>
+                                       
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field #field floatLabel="always" class="w-100" appearance="outline"
+                                        class="full-width radio-container">
+                                        <input class="form-control" matInput [matDatepicker]="picker4" 
+                                            placeholder="DD/MM/YYYY"formControlName="dob" readonly="" formControlName="PayOptedDate">
+                                            <mat-datepicker-toggle matSuffix [for]="picker4" ></mat-datepicker-toggle>
+                                            <mat-datepicker #picker4 class="mat-piker"></mat-datepicker>
+                                    </mat-form-field>
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Pay Band Scale</mat-label>
+                                            <select matNativeControl  formControlName="BasicPay">
+                                                    <option value="">1</option>
+                                                    <option value="">1</option>
+                                                    <option value="">1</option>
+                                                    <option value="">1</option>
+                                                  </select>
+                                
+                                        </mat-form-field>
+                                       
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Grade Pay</mat-label>
+                                            <select matNativeControl   formControlName="gradePay">
+                                                    <option value="">1</option>
+                                                    <option value="">1</option>
+                                                    <option value="">1</option>
+                                                    <option value="">1</option>
+                                                  </select>
+                                
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Basic Pay</mat-label>
+                                            <select matNativeControl   formControlName="BasicPay">
+                                                    <option value="">1</option>
+                                                    <option value="">1</option>
+                                                    <option value="">1</option>
+                                                    <option value="">1</option>
+                                                  </select>
+                                
+                                        </mat-form-field>
+                                    </div>
+                                    
+                                </div>
+
+                                
+
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>HoA</mat-label>
+                                            <input matInput formControlName="HoA"
+                                            required="" data-validation-required-message="This field is required"
+                                            aria-invalid="false" ngModel pattern="[a-zA-Z ]*">
+                                        </mat-form-field>
+                                       
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>DA Rate</mat-label>
+                                            <select matNativeControl  formControlName="Darate">
+                                                <option *ngFor="let mst of DAdata" value={{mst.DA_RATE_ID}}>{{mst.DA_RATE}}
+                                                </option>
+                                              </select>
+                                
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Govt Quarter</mat-label>
+                                            <select matNativeControl  formControlName="GovtQuarter">
+                                                <!-- <option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}>
+                                                      {{mst.SRVC_CAT_CD_NAME_EN}}
+                                                  </option> -->
+                                              </select>
+                                
+                                        </mat-form-field>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row mt-2">
+                                    
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>HRA Rate</mat-label>
+                                            <select matNativeControl  formControlName="HRAData">
+                                                <option *ngFor="let mst of HRAData" value={{mst.CITY_CLASS_ID}}>{{mst.RATE}}
+                                                </option>
+                                              </select>
+                                
+                                        </mat-form-field>
+                                    </div>
+                                    
+                                    
+                                </div>
+
+                               <!-- filedset -->
+ 
+                      <div class="Row" style="padding-top: 10px;">
+                        <label class="bg-light-blue" style=" font-weight: bold;">
+                          <div class="section-title">
+                            <p>Group Name Details</p>
+                          </div>
+                        </label>
+                      </div>
+
+                        <div class="Row" style="padding-top: 10px;">
+                          <label class=" bg-light-blue" style=" font-weight: bold;">
+                            <div class="section-title">
+                              <u><p>Earning & Deduction Details</p></u>
+                            </div>
+                          </label>
+                        </div>
+                   
+                      <div class="row">
+                        <div class="col-md-6">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Earning Component</th>
+                              </tr>
+                              <tr>
+                                <th>Sr.No.</th>
+                                <th>Pay Head Name</th>
+                                <th>Pay Head Value</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>1</td>
+                                <td>Basic Pay/Band Pay</td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>Grade Pay</td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td>3</td>
+                                <td>Dearness Allowance</td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td>4</td>
+                                <td>House Rent Allowance</td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <a routerLink="">
+                            <u>Add Component</u>
+                          </a>
+                        </div>
+                        <div class="col-md-6">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Deduction Component</th>
+                              </tr>
+                              <tr>
+                                <th>Sr.No.</th>
+                                <th>Pay Head Name</th>
+                                <th>Pay Head Value</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>1</td>
+                                <td>GPF</td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>NPS Employee Contribution</td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td>3</td>
+                                <td>SI</td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td>4</td>
+                                <td>Income Tax</td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <a routerLink="">Add Component</a>
+                        </div>
+                      </div>
+                      <div class="row mt-2">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col">Net Earning</th>
+                              <th scope="col">Net Deduction</th>
+                              <th scope="col">Net Salary</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                          </tbody>
+                        </table>
+                      </div>
+                 
+                            
+
+
+                              <div class="text-center mt-4">
+                                <button class="btn btn-primary ms-2" mat-raised-button (click)=" OnSubmit()">Save</button>
+                                <button class="btn btn-success ms-2" mat-raised-button> Next</button>
+                              </div>
+
+                                <!-- <button class="btn btn-danger ms-2" mat-raised-button> Cancel</button> -->
+                           <app-emp-button></app-emp-button>
+                            </form>
+                        </fieldset>
+                    </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

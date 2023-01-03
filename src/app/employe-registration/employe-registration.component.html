@@ -1,0 +1,395 @@
+<div class="content-wrapper">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+                <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+            </div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+
+                <div class="row d-flex align-item-center mt-2">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+                            <ol _ngcontent-usv-c162="" class="breadcrumb">
+                                <li _ngcontent-usv-c162="" class="breadcrumb-item"><a routerLink="/landing-page">Landing
+                                        Page</a> </li>
+                                <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a
+                                        routerLink="/ESS-Dashboard">Dashboard</a> </li>
+                                <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page"
+                                    class="breadcrumb-item active">
+                                    Employee's Basic Information</li>
+                            </ol>
+
+                        </nav>
+                    </div>
+
+                </div>
+
+                <app-username></app-username>
+                <section class="content">
+                    <div class="light-blue-bg p-4">
+                        <fieldset class="p-3">
+                            <legend class="mb-3">Employee's Basic Information</legend>
+                            <form [formGroup]="EmpRegistration" (ngSubmit)="onSubmit()">
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 ">
+                                        <mat-radio-group aria-label="Select an option mb-3">
+                                            <mat-radio-button value="1" color="primary" checked > Jan Aadhaar Number</mat-radio-button>
+                                            <mat-radio-button value="2" color="primary" disabled="" class="ml-5 optionbutton">Aadhaar Number
+                                            </mat-radio-button>
+                                            <mat-radio-button value="2" color="primary" disabled="" class="ml-5 optionbutton">Mobile Number
+                                            </mat-radio-button>
+                                        </mat-radio-group>
+                                        <div class="input-group mb-3">
+                                            <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                                <mat-label>Search </mat-label>
+                                                <input matInput placeholder="Search by" [(ngModel)]="JanAadharId"
+                                                    formControlName="JanadharInfodata" name="JanadharInfodata"
+                                                    id="JanadharInfodata" maxlength="10" (keypress)="numberOnly($event)"
+                                                    (click)="onClicked(true)">
+                                                    <button type="button" class="btn btn-primary Search-btn-position"
+                                                    mat-raised-button color="primary"
+                                                    (click)="getJanAadhar()" style="top: -5px">Search </button>
+                                              
+                                            </mat-form-field>
+                                            <span id="sptxt" class="text-danger" style="margin-top: -17px"></span>
+                                            
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12  col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100 mt-4"  appearance="outline">
+                                            <mat-label> Member's Name</mat-label>
+                                            <select matNativeControl (change)="updateSorting($event)"
+                                                formControlName="MemberID"
+                                                [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['MemberID'].errors}">
+                                                <option value="">--Select Person--</option>
+                                                <option *ngFor="let mst of JanadharInfodata" value={{mst.janMid}}
+                                                    [disabled]="mst.age <=18">
+                                                    {{mst.nameEng}}&nbsp; &nbsp;
+                                                    <span class="mr-3">{{mst.janMid}}</span> &nbsp; &nbsp;, &nbsp;
+                                                    &nbsp;<b class="mr-3 font-weight-bold">{{mst.age
+                                                        }} </b>
+
+                                                </option>
+                                            </select>
+
+                                            <mat-hint *ngIf="submitted && EmpRegistration.controls['MemberID'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpRegistration.controls['MemberID'].errors['required']">
+                                                Please Enter Member's Name
+                                            </div>
+                                           </mat-hint>
+                                        </mat-form-field>
+
+
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Service Status </mat-label>
+                                            <select matNativeControl formControlName="employeeType"
+                                                [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['employeeType'].errors}">
+                                                
+                                                <option *ngFor="let mst of EmployeeTypedata" value={{mst.STATUS_ID}}>
+                                                    {{mst.STATUS_NAME}}
+                                                </option>
+                                            </select>
+
+                                            <mat-hint *ngIf="submitted && EmpRegistration.controls['employeeType'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpRegistration.controls['employeeType'].errors['required']">
+                                                Please Enter  Service Status
+                                            </div>
+                                           </mat-hint>
+                                        </mat-form-field>
+
+
+
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Service Category</mat-label>
+                                            <select matNativeControl (change)="getSubServiceCategory($event)"
+                                                formControlName="service_Category"
+                                                [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['service_Category'].errors}">
+                                                <option *ngFor="let mst of ServiceCategorygdata"
+                                                    value={{mst.SRVC_CAT_ID}}>
+                                                    {{mst.SRVC_CAT_NAME_EN }}
+                                                </option>
+                                            </select>
+                                            <mat-hint *ngIf="submitted && EmpRegistration.controls['service_Category'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpRegistration.controls['service_Category'].errors['required']">
+                                                Please Enter  Service Category
+                                            </div>
+                                           </mat-hint>
+                                        </mat-form-field>
+                                       
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Service-Sub Category/Cadre </mat-label>
+                                            <select matNativeControl formControlName="serviceSub_Category"
+                                                [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['serviceSub_Category'].errors}">
+                                                <option *ngFor="let mst of SubServiceCategorydata"
+                                                    value={{mst.SRVC_SUBCAT_ID}}>
+                                                    {{mst.SUB_SRVC_CAT_NAME_EN }}
+                                                </option>
+                                            </select>
+                                            <mat-hint *ngIf="submitted && EmpRegistration.controls['serviceSub_Category'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpRegistration.controls['serviceSub_Category'].errors['required']">
+                                                Please Enter  Service-Sub Category/Cadre
+                                            </div>
+                                           </mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Name </mat-label>
+                                            <input matInput pattern="[a-zA-Z ]*" value="{{selectedRecord.nameEng}}"
+                                                formControlName="Name"
+                                                [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['Name'].errors}">
+
+                                                <mat-hint *ngIf="submitted && EmpRegistration.controls['Name'].errors"
+                                                class="text-danger">
+                                                <div
+                                                    *ngIf="submitted && EmpRegistration.controls['Name'].errors['required']">
+                                                    Please Enter  Name
+                                                </div>
+                                               </mat-hint>
+                                        </mat-form-field>
+
+
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Date of Birth</mat-label>
+                                            <input matInput value="{{selectedRecord.dob }}" formControlName="dob"
+                                                [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['dob'].errors}" />
+
+                                         <mat-hint *ngIf="submitted && EmpRegistration.controls['dob'].errors"
+                                                class="text-danger">
+                                                <div
+                                                    *ngIf="submitted && EmpRegistration.controls['dob'].errors['required']">
+                                                    Please Enter Date of Birth
+                                                </div>
+                                               </mat-hint>
+                                            </mat-form-field>
+
+
+                                        
+                                      
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Father's Name</mat-label>
+                                            <input matInput formControlName="fname" value="{{selectedRecord.fnameEng}}"
+                                                [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['fname'].errors}">
+                                        
+                                                <mat-hint *ngIf="submitted && EmpRegistration.controls['fname'].errors"
+                                                class="text-danger">
+                                                <div
+                                                    *ngIf="submitted && EmpRegistration.controls['fname'].errors['required']">
+                                                    Please Enter  Father's Name
+                                                </div>
+                                               </mat-hint>
+                                            </mat-form-field>
+                                           
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Mother's Name</mat-label>
+                                            <input matInput formControlName="mname" value="{{selectedRecord.mnameEng}}"
+                                                [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['mname'].errors}">
+                                        
+                                                <mat-hint *ngIf="submitted && EmpRegistration.controls['mname'].errors"
+                                                class="text-danger">
+                                                <div
+                                                    *ngIf="submitted && EmpRegistration.controls['mname'].errors['required']">
+                                                    Please Enter Mother's Name
+                                                </div>
+                                               </mat-hint>
+                                        
+                                            </mat-form-field>
+                                      
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Appointment Order No.</mat-label>
+                                            <input matInput formControlName="AppointmentOrder"
+                                            (keypress)="numberOnly($event)" maxlength="10"
+                                                [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['AppointmentOrder'].errors}" />
+
+                                                <mat-hint *ngIf="submitted && EmpRegistration.controls['AppointmentOrder'].errors"
+                                                class="text-danger">
+                                                <div
+                                                    *ngIf="submitted && EmpRegistration.controls['AppointmentOrder'].errors['required']">
+                                                    Please Enter Appointment Order No.
+                                                </div>
+                                               </mat-hint>
+                                        </mat-form-field>
+                                       
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field appearance="outline" class="w-100" floatLabel="always">
+                                            <mat-label>Appointment Date </mat-label>
+                                            <input matInput [matDatepicker]="picker1" [max]="getToday()" readonly=""
+                                                readonly="" formControlName ="getTodaydate"  [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['AppointmentOrder'].errors}" />
+                                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker1></mat-datepicker>
+                                            <mat-hint *ngIf="submitted && EmpRegistration.controls['getTodaydate'].errors"
+                                                class="text-danger">
+                                                <div
+                                                    *ngIf="submitted && EmpRegistration.controls['getTodaydate'].errors['required']">
+                                                    Please Enter  Appointment Date
+                                                </div>
+                                               </mat-hint>
+                                        </mat-form-field>
+                                    </div>
+
+
+                                    <div class="float-center text-center mt-3 mb-4">
+                                        <button type="button" type="submit" class="btn btn-primary" mat-raised-button
+                                            color="primary">Save As Draft</button>
+                                        <!-- <button class="btn btn-secondary ms-2" mat-raised-button color="secondary">Next</button> -->
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+
+                                    <legend class="mb-3">Document</legend>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label> Upload Document</mat-label>
+                                            <select matNativeControl formControlName="Description" id="Description">
+                                                <option *ngFor="let mst of DocumentTypedata" value={{mst.DOC_TYPE_ID}}>
+                                                    {{mst.TYPE_NAME}}
+                                                </option>
+                                            </select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+
+
+                                        <!-- <mat-form-field appearance="outline">
+                                            <mat-toolbar>
+                                                <input matInput [value]="" class="d-none">
+                                            </mat-toolbar>
+                                            <input type="file" formControlName="file" id="file"
+                                                (change)="onFileChange($event)" maxFileSize="50000" accept="image/*" />
+                                        </mat-form-field> -->
+
+                                        <div (click)="uploadFile.click()" class="mt-2" >
+                                            <button type="button" class="btn btn-secondary ms-2" mat-raised-button
+                                                color="secondary">Choose File</button>
+                                            <input type="file" #uploadFile (change)="selectFile($event)"
+                                                style="display: none" formControlName="file" id="file"
+                                                (change)="onFileChange($event)" maxFileSize="50000" accept="image/*" />
+                                            <mat-label class="ms-2">{{selectedFiles}}</mat-label>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <div class=" mt-2">
+                                            <button type="submit" class="btn btn-primary" mat-raised-button
+                                                color="primary">Upload</button>
+                                            <button class="btn btn-success ms-2" mat-raised-button> Add File</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2 col-xxl-2">
+
+                                        <div class="float-left mt-2 ">
+                                            <!-- <button class="btn btn-success ms-2" mat-raised-button> Add File</button> -->
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <hr>
+                              
+
+                            </form>
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2 col-xxl-2">
+
+                                    <div class="float-left mt-2 ">
+                                        <h4>Assigened to *</h4>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+
+                                    <mat-form-field class="w-100" appearance="outline" floatLabel="always"> 
+                                        <mat-label>Authority Name</mat-label>
+                                        <select matNativeControl formControlName="assigened" id="assigened">
+                                            <option value="">--Please Select Assigened--</option>
+                                            <option value="-1">Assigened</option>
+                                        </select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2 col-xxl-2">
+
+                                    <div class="float-left mt-2 ">
+                                        <h4>Remark *</h4>
+
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                                    <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                        <mat-label>Remark</mat-label>
+                                        <input matInput formControlName="remark" id="remark" rows="1">
+                                        
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+
+
+                            <button type="button" class="btn btn-primary"  mat-raised-button color="primary" mat-raised-button
+                                (click)="finalsubmit()">Save</button>
+                            <button type="button" class="btn btn-success ms-2" mat-raised-button> Submit</button>
+                            <button type="button" class="btn btn-danger ms-2" mat-raised-button> Cancel</button>
+                        </fieldset>
+                    </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    function openmenu() {
+        document.getElementById("Sidenav").style.width = "285px";
+    }
+
+    function closemenu() {
+        document.getElementById("Sidenav").style.width = "0";
+    }
+</script>

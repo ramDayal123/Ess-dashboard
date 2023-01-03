@@ -1,0 +1,5 @@
+<div (click)="uploadFile.click()">
+    <button class="btn btn-secondary ms-2" mat-raised-button color="secondary">Choose File</button>
+    <input #uploadFile (change)="selectFile($event)" type='file' style="display:none"/> 
+    <mat-label class="ms-2">{{selectedFiles}}</mat-label>
+ </div>

@@ -1,0 +1,22 @@
+.dashboardbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .p-22{
+    padding: 0.34375em!important;
+    }
+    .text-red{
+      color: red;
+    }
+    .thead-primary{
+      background-color: #95c5f3d6;
+     
+     } 
+     .thead-primary th:hover{
+     color: #fff;
+     
+     }
+     .viewbottom{
+      padding-bottom: 180px;
+    }

@@ -1,0 +1,159 @@
+<div class="content-wrapper">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+                <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+            </div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+
+                <div class="row d-flex align-item-center mt-3">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+                            <ol _ngcontent-usv-c162="" class="breadcrumb">
+                                <li _ngcontent-usv-c162="" class="breadcrumb-item"><a>Landing
+                                        Page</a> </li>
+                                <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a routerLink="/Ess-Req">My
+                                        Request</a> </li>
+                                <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page"
+                                    class="breadcrumb-item active">
+                                    Bank Account Change Request</li>
+                            </ol>
+
+                        </nav>
+                    </div>
+                    <!-- <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 py-2">
+                        <button class="btn btn-primary w-100" routerLink="/ESS-Dashboard" mat-raised-button color="primary">Back To Dashboard</button>
+                    </div>     -->
+                </div>
+                <app-username></app-username>
+                <section class="content viewbottom">
+                    <div class="light-blue-bg p-4">
+                        <fieldset class="p-3">
+                            <legend class="mb-2">Bank Account Change Request</legend>
+
+                            <form [formGroup]="updateBank" (ngSubmit)="onSubmit()">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5>Current Bank Details</h5>
+                                    </div>
+                                </div>
+                                <div class="row m-2  pb-2">
+
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Account No.</mat-label>
+                                            <input matInput formControlName="ACCOUNT_NO">
+                                            <mat-hint></mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Bank Name</mat-label>
+                                            <select matNativeControl formControlName="PAYEE_BANK_ID"
+                                                (change)="getBankBranch()">
+                                                <option *ngFor="let mst of BankData" value={{mst.BANK_ID}}>
+                                                    {{mst.BANK_NAME_EN}} </option>
+                                            </select>
+                                            <mat-hint></mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Branch</mat-label>
+                                            <select matNativeControl formControlName="BANK_BRANCH_ID">
+                                                <option *ngFor="let mst of BankBranchData" value={{mst.BANK_BRANCH_ID}}>
+                                                    {{mst.BRANCH_NAME_EN}} </option>
+                                            </select>
+
+                                            <mat-hint></mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <hr style="border-color: #2471BC;">
+
+                                <div class="row m-2  pb-2">
+                                    <div class="col-md-12">
+                                        <h5>New Bank Details</h5>
+                                    </div>
+                                </div>
+                                <div class="row m-2  pb-2">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Enter IFSC</mat-label>
+                                            <input matInput formControlName="Enter_IFSC">
+                                            <mat-error>IFSC is Mandatory</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <h5 style="text-align:center;">OR</h5>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Account No.</mat-label>
+                                            <input matInput formControlName="new_Account_No">
+                                            <mat-error>Account No. is Mandatory</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <button class="btn btn-primary" mat-raised-button
+                                            color="primary">Submit</button>
+                                        <button class="btn btn-secondary ms-2" mat-raised-button color="warn"
+                                            routerLink="/ESS-Req">Back</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                            <div class="row mt-2 justify-content-center">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                                    <div style="overflow-x:auto; width: 100%; display: block;">
+                                                        <table class="table table-striped">
+                                                            <thead class="thead-primary">
+                                                                <tr>
+                                                                    <th>Sr. No.</th>
+                                                                    <th>Req Id</th>
+                                                                    <th>Account Number</th>
+                                                                    <th>IFSC Code</th>
+                                                                    <th>Status</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr *ngFor="let obj of updateBankList ;let i = index">
+                                                                    <th>{{i+1}}</th>
+                                                                    <td>{{obj.REQUEST_ID}}</td>
+                                                                    <td>{{obj.REQUESTED_JSON.accountNumber}}</td>
+                                                                    <td>{{obj.REQUESTED_JSON.ifsc}}</td>
+                                                                    <td>{{obj.VARIFY_STATUS}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                </div>
+                            </div>
+        
+
+                        </fieldset>
+                    </div>
+                    
+                </section>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    function openmenu() {
+        document.getElementById("Sidenav").style.width = "285px";
+    }
+
+    function closemenu() {
+        document.getElementById("Sidenav").style.width = "0";
+    }
+</script>

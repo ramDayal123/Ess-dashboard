@@ -1,0 +1,132 @@
+<!-- <app-header></app-header> -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="d-none d-sm-block col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 p-0">
+            <app-sidemenu></app-sidemenu>
+        </div>
+
+
+        <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10 mt-4">
+            <div class="row">
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                    <div class="left">
+                        <div class="leftpro">
+                            <img src="assets/images/usericon.png" alt="user-icon">
+                            <!-- <i class="fa fa-user" aria-hidden="true" style="font-size: 100px;"></i> -->
+                            <h3>{{employeeName}}</h3>
+                            <p>{{employeeID}}</p>
+                        </div>
+                        <hr style="background-color: #2471BC; height: 1px;">
+                        <table class="lefttbl">
+                            <tr>
+                                <td>
+                                    <p>Employee Name</p>
+                                    
+                                </td>
+                                <td><b><p> {{employeeName}}</p></b></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Employee ID</p>
+                                </td>
+                                <td><b><p>
+                                    {{employeeID}}
+                                </p></b> </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Date Of Joining</p>
+                                </td>
+                                <td><b><p>
+                                    {{empDOJ}}
+                                </p></b> </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Designation</p>
+                                </td>
+                                <td><b><p>
+                                    {{empDesig}}
+                                </p></b></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Department</p>
+                                </td>
+                                <td><b><p>
+                                    {{empDpt}}
+                                </p></b></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>GPF Number</p>
+                                </td>
+                                <td><b><p>
+                                    {{empGPFNo}}
+                                </p></b></td>
+                            </tr>
+                        </table>
+                    </div>  
+                </div>
+                <div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
+                    <div class="row">
+                        <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                            <div class="lefttop">
+                                <!-- <span><i class="fa fa-inr" aria-hidden="true"></i></span> -->
+                                <img src="assets/images/salaryicon.png" alt="salaryslip-icon">
+                            <h3>Salary Slip</h3>
+                            <p>Generated</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 ">
+                            <div class="lefttop">
+                                <img src="assets/images/taxicon.png" alt="tax-icon">
+                                <!-- <span><i class="fa fa-money" aria-hidden="true"></i></span> -->
+                            <h3>Tax Declaration</h3>
+                            <p>17 Apr 2021</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                            <div class="lefttop">
+                                <img src="assets/images/envelopicon.png" alt="Mail-icon">
+                                <!-- <span><i class="fa fa-envelope" aria-hidden="true"></i></span> -->
+                            <h3>Notification</h3>
+                            </div>
+                            
+                        </div>
+                        <div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 ">
+                            <div class="lefttop" style="padding-top: 80px;">
+                                <h3>Initiate Joining</h3>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                            <div class="leftbottom">
+                                <h3>Notification</h3>
+                            <ul style="list-style-type: decimal;">
+                                <h5>Facilities Available at Portal</h5>
+                                <li *ngFor="let mst of ESSnotification" >{{mst.MESSAGE}}</li>
+                            </ul>
+                            </div>
+                            
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                            <div class="leftbottom">
+                                <h3>Important Document</h3>
+                            <ul style="list-style-type: decimal;">
+                               <li *ngFor="let mst of ESSimpdata" ><a href="#">{{mst.DOC_NAME}}</a> </li>
+                            </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- <app-footer></app-footer> -->

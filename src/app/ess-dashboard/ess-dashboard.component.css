@@ -1,0 +1,66 @@
+.drpbtn{
+    border-radius: 3px;
+    background: #ffffff;
+    border: 1px solid black;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.drpbtn:hover{
+    background-color: #F0CA1B;
+    color: #ffffff;
+}
+.headerbtn{
+    background-color: #2C79C5;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.headbtngrp i{
+    position: relative;
+    left: 700px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+.leftpro{
+    text-align: center;
+}
+.leftpro img{
+    margin-top: 20px;
+}
+.left{
+    border: 3px solid #2471BC;
+    height: 480px;
+}
+.lefttbl{
+    margin-left: 40px;
+    border: none;
+}
+
+.lefttbl tr td p{
+    padding-left: 20px;
+}
+.lefttop{
+    border: 3px solid #2471BC;
+    padding: 20px;
+    height: 175px;
+    /* width: 100px; */
+}
+
+@media screen and (max-width: 786px) {
+    .lefttop{
+        margin-top: 15px;
+    }
+  }
+.leftbottom{
+    border: 3px solid #2471BC;
+    padding: 20px;
+    height: 275px;
+    margin-top: 30px;
+}
+.lefttop span i{
+    font-size: 50px;
+    display: inline;
+}

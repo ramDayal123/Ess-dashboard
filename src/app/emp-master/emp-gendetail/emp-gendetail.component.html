@@ -1,0 +1,341 @@
+
+<div class="content-wrapper">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+                <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+            </div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+                
+                <div class="row d-flex align-item-center mt-3">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+                            <ol _ngcontent-usv-c162="" class="breadcrumb">
+                                <li _ngcontent-usv-c162="" class="breadcrumb-item"><a 
+                                        routerLink="/landing-page">Landing Page</a> </li>
+                                <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a  routerLink="/ESS-Dashboard"
+                                        >Dashboard</a> </li>
+                                <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                                    Employee General Details</li>
+                            </ol>
+                            
+                        </nav>
+                    </div>
+                    <!-- <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 py-2">
+                        <button class="btn btn-primary w-100" routerLink="/ESS-Dashboard" mat-raised-button color="primary">Back To Dashboard</button>
+                    </div>     -->
+                </div>
+                <app-username></app-username>
+                <section class="content viewbottom">
+                    <div class="light-blue-bg p-4">            
+                        <fieldset class="p-3">
+                            <legend class="mb-3">Employee General Details</legend>
+                            <form  [formGroup]="EmployeeIDForm" (ngSubmit)="onSubmitSearch()" >  
+                                    <div class="row mt-2">                                       
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Employee ID/Mobile No/Name</mat-label>
+                                                <input matInput placeholder="Placeholder" formControlName="Employee_ID">
+                                                <mat-hint *ngIf="submittedd && EmployeeIDForm.controls['Employee_ID'].errors" class="text-danger">                                                   
+                                                    <div *ngIf="submittedd && EmployeeIDForm.controls['Employee_ID'].errors['required']">
+                                                      Please Enter Employee ID/Mobile No/Name
+                                                    </div>                                                 
+                                            </mat-hint>
+                                              </mat-form-field>
+                
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <div class="float-end">
+                                            <button class="btn btn-primary" type="submit" mat-raised-button color="primary"><i class="fa fa-search" aria-hidden="true"></i> &nbsp; Search</button>
+                                    </div>
+                                        </div>
+                                    </div>
+                            </form>
+                            <form  [formGroup]="EmpSelfDetailForm" (ngSubmit)="onSubmit()" >  
+                                    <div class="row mt-2">   
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Name</mat-label>
+                                                <input matInput placeholder="Placeholder" formControlName="Name">
+                                                <mat-hint *ngIf="submitted && EmpSelfDetailForm.controls['Name'].errors" class="text-danger">
+                                                    <div *ngIf="submitted && EmpSelfDetailForm.controls['Name'].errors['required']">
+                                                        Please Enter Name
+                                                      </div> 
+                                                </mat-hint>
+                                              </mat-form-field>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Date of Birth</mat-label>
+                                                <input matInput placeholder="Placeholder">
+                                                <mat-hint>Hint</mat-hint>
+                                              </mat-form-field>
+                                        </div>
+                                       
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field  class="w-100" appearance="outline">
+                                            <mat-label>Gender </mat-label>
+                                            <select matNativeControl required>
+                                                <option value="employeeType-1">male</option>
+                                                <option value="employeeType-2">female</option>                                             
+                                            </select>
+                                            </mat-form-field>
+                                        </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>Height</mat-label>
+                                                    <input matInput placeholder="Placeholder">
+                                                    <mat-hint>Hint</mat-hint>
+                                                  </mat-form-field>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>Identification Marks</mat-label>
+                                                    <input matInput placeholder="Placeholder">
+                                                    <mat-hint>Hint</mat-hint>
+                                                  </mat-form-field>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>Father Name</mat-label>
+                                                    <input matInput placeholder="Placeholder">
+                                                    <mat-hint>Hint</mat-hint>
+                                                  </mat-form-field>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>Mother Name</mat-label>
+                                                    <input matInput placeholder="Placeholder">
+                                                    <mat-hint>Hint</mat-hint>
+                                                  </mat-form-field>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>Spouse Name</mat-label>
+                                                    <input matInput placeholder="Placeholder">
+                                                    <mat-hint>Hint</mat-hint>
+                                                  </mat-form-field>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>Marital Status</mat-label>
+                                                    <input matInput placeholder="Placeholder">
+                                                    <mat-hint>Hint</mat-hint>
+                                                  </mat-form-field>
+                                            </div>
+            
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">            
+                                                <div class="form-check p-0">                                                   
+                                                    <label class="form-radio" for="exampleCheck2">  Disabled(Yes/No) </label>
+                                                    <mat-radio-group aria-label="Select an option">
+                                                        <mat-radio-button value="1">Yes</mat-radio-button> &nbsp;
+                                                        <mat-radio-button value="2">NO</mat-radio-button>
+                                                      </mat-radio-group>
+                                                </div>
+                                            </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                    <mat-form-field class="w-100" appearance="outline">
+                                                        <mat-label>Type of Disability</mat-label>
+                                                        <input matInput placeholder="Placeholder">
+                                                        <mat-hint>Hint</mat-hint>
+                                                      </mat-form-field>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                    <mat-form-field class="w-100" appearance="outline">
+                                                        <mat-label>Percentage of Disability</mat-label>
+                                                        <input matInput placeholder="Placeholder">
+                                                        <mat-hint>Hint</mat-hint>
+                                                      </mat-form-field>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                    <mat-form-field  class="w-100" appearance="outline">
+                                                        <mat-label>Blood Group</mat-label>
+                                                        <select matNativeControl required>
+                                                            <option value="employeeType-1">A+</option>
+                                                            <option value="employeeType-2">A-</option>
+                                                            <option value="employeeType-3">O+</option>
+                                                            <option value="employeeType-4">B+</option>
+                                                        </select>
+                                                        </mat-form-field>
+                                                
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                    <mat-form-field class="w-100" appearance="outline">
+                                                        <mat-label>Email ID</mat-label>
+                                                        <input matInput placeholder="Placeholder">
+                                                        <mat-hint>Hint</mat-hint>
+                                                      </mat-form-field>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                    <mat-form-field class="w-100" appearance="outline">
+                                                        <mat-label>Mobile No.</mat-label>
+                                                        <input matInput placeholder="Placeholder">
+                                                        <mat-hint>Hint</mat-hint>
+                                                      </mat-form-field>
+                                                </div>
+                                               
+                                        
+                                        
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+            
+                                           <mat-form-field  class="w-100" appearance="outline">
+                                                <mat-label>Social Category </mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">Volvo</option>
+                                                    <option value="employeeType-2">Saab</option>
+                                                    <option value="employeeType-3">Mercedes</option>
+                                                    <option value="employeeType-4">Audi</option>
+                                                </select>
+                                                </mat-form-field>
+                                        </div>
+
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">            
+                                            <div class="form-check p-0">                                                   
+                                                <label class="form-radio" for="exampleCheck2">  Belongs to Minority(Yes/No) </label>
+                                                <mat-radio-group aria-label="Select an option">
+                                                    <mat-radio-button value="1">Yes</mat-radio-button> &nbsp;
+                                                    <mat-radio-button value="2">NO</mat-radio-button>
+                                                  </mat-radio-group>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+            
+                                            <mat-form-field  class="w-100" appearance="outline">
+                                                <mat-label>Employee Category </mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">Volvo</option>
+                                                    <option value="employeeType-2">Saab</option>
+                                                    <option value="employeeType-3">Mercedes</option>
+                                                    <option value="employeeType-4">Audi</option>
+                                                </select>
+                                                </mat-form-field>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field  class="w-100" appearance="outline">
+                                                <mat-label>Service Category </mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">Volvo</option>
+                                                    <option value="employeeType-2">Saab</option>
+                                                    <option value="employeeType-3">Mercedes</option>
+                                                    <option value="employeeType-4">Audi</option>
+                                                </select>
+                                                </mat-form-field>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">            
+                                            <mat-form-field  class="w-100" appearance="outline">
+                                                <mat-label>Sub Service Category/cadre</mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">Volvo</option>
+                                                    <option value="employeeType-2">Saab</option>
+                                                    <option value="employeeType-3">Mercedes</option>
+                                                    <option value="employeeType-4">Audi</option>
+                                                </select>
+                                                </mat-form-field>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">            
+                                            <mat-form-field  class="w-100" appearance="outline">
+                                                <mat-label>Parent Department</mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">Volvo</option>
+                                                    <option value="employeeType-2">Saab</option>
+                                                    <option value="employeeType-3">Mercedes</option>
+                                                    <option value="employeeType-4">Audi</option>
+                                                </select>
+                                                </mat-form-field>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">            
+                                            <mat-form-field  class="w-100" appearance="outline">
+                                                <mat-label>Current Department</mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">Volvo</option>
+                                                    <option value="employeeType-2">Saab</option>
+                                                    <option value="employeeType-3">Mercedes</option>
+                                                    <option value="employeeType-4">Audi</option>
+                                                </select>
+                                                </mat-form-field>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">            
+                                            <mat-form-field  class="w-100" appearance="outline">
+                                                <mat-label>Appoinment As </mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">Volvo</option>
+                                                    <option value="employeeType-2">Saab</option>
+                                                    <option value="employeeType-3">Mercedes</option>
+                                                    <option value="employeeType-4">Audi</option>
+                                                </select>
+                                                </mat-form-field>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">            
+                                            <mat-form-field  class="w-100" appearance="outline">
+                                                <mat-label> Current Designation</mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">Volvo</option>
+                                                    <option value="employeeType-2">Saab</option>
+                                                    <option value="employeeType-3">Mercedes</option>
+                                                    <option value="employeeType-4">Audi</option>
+                                                </select>
+                                                </mat-form-field>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Order Issuing Authority</mat-label>
+                                                <input matInput placeholder="Placeholder">
+                                                <mat-hint>Hint</mat-hint>
+                                              </mat-form-field>
+                                        </div>
+                                       
+                                        
+                                   
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+            
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Appoinment Authority </mat-label>
+                                                <input matInput placeholder="Placeholder">
+                                                <mat-hint>Hint</mat-hint>
+                                              </mat-form-field>
+                                        </div>
+
+                                       
+                                    </div>
+                                   
+                                 
+                                <div class="float-center">
+                                    <!-- <button class="btn btn-primary" mat-raised-button color="primary">Save</button> -->
+                                    <button type="submit" class="btn btn-secondary ms-2" mat-raised-button color="secondary" routerLink="/employee-id-number">Next</button>
+                                </div>
+
+                            </form>
+                               
+                        </fieldset>
+
+                        <div class="row mt-2">
+                         <div class="float-center">
+                            <button class="btn btn-primary" mat-raised-button color="primary">Save</button>
+                            <button class="btn btn-secondary ms-2" mat-raised-button color="secondary">Refresh</button> 
+                            <button class="btn btn-warning ms-2" mat-raised-button color="secondary">Modify</button>
+                         
+                        </div>
+                        </div>
+                        <div class="row mt-2">                          
+                            <div class="float-center">
+                                <app-epm-general-button></app-epm-general-button>                         
+                            </div>
+                            </div>
+                    </div>
+                       
+                </section>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<script>
+    function openmenu() {
+      document.getElementById("Sidenav").style.width = "285px";
+    }
+
+    function closemenu() {
+      document.getElementById("Sidenav").style.width = "0";
+    }
+  </script>

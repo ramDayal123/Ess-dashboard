@@ -1,0 +1,23 @@
+.content form{
+    padding: 20px;
+}
+.content h1{
+    padding: 20px;
+    text-align: center;
+}
+.loginfld{
+    margin-top: 160px;
+}
+.content form button{
+    width: 230px;
+    position: relative;
+    left: 500px;
+}
+
+@media screen and (max-width: 786px) {
+    .content form button{
+        width: 100px;
+        position: relative;
+        left: 160px;
+    }
+  }

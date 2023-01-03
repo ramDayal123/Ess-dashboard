@@ -1,0 +1,377 @@
+                
+<div class="content-wrapper">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+                <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+            </div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+                
+                <div class="row d-flex align-item-center ">
+
+                    
+             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2">
+                <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+                    <ol _ngcontent-usv-c162="" class="breadcrumb">
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"><a _ngcontent-usv-c162="" routerlink="/login"
+                                ng-reflect-router-link="/login" href="/login">Landing Page</a>
+                        </li>
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a _ngcontent-usv-c162="" routerlink="/main"
+                                ng-reflect-router-link="/main" href="/main">Dashboard</a> </li>
+                        <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page"
+                            class="breadcrumb-item active">
+                            Employee Service Details</li>
+                    </ol>
+                </nav>
+                <app-username></app-username>
+                
+                <section class="content viewbottom">
+                    <div class="light-blue-bg p-4">
+                        <fieldset class="p-3">
+                            <legend class="mb-3">Employee Basic Information</legend>
+                            <form [formGroup]="EmpPersonalDetail">
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label> Name</mat-label>
+                                            <input matInput formControlName="name"
+                                                (keypress)="this.global.keyPressAlphaNumericWithCharactersAlpha($event)"
+                                                pattern="[a-zA-Z][a-zA-Z ]+"
+                                                [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['name'].errors}">
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmpPersonalDetail.controls['name'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpPersonalDetail.controls['name'].errors['required']">
+                                                Please Enter Name
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Gender.</mat-label>
+                                            <select matNativeControl formControlName="gender"
+                                                [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['gender'].errors}">
+
+                                                <option *ngFor="let mst of GenderData" value={{mst.GEN_ID}}>
+                                                    {{mst.GEN_NAME_EN}} </option>
+                                            </select>
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmpPersonalDetail.controls['gender'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpPersonalDetail.controls['gender'].errors['required']">
+                                                Please Enter Gender
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Height ( cm )</mat-label>
+                                            <input matInput aria-invalid="false" formControlName="height"
+                                                (keypress)="this.global.numberOnly($event)"
+                                                [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['height'].errors}">
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmpPersonalDetail.controls['height'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpPersonalDetail.controls['height'].errors['required']">
+                                                Please Enter Height ( cm )
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+
+
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Date Of Birth :</mat-label>
+                                            <input matInput [matDatepicker]="picker1" readonly="" readonly=""
+                                                formControlName="dob">
+                                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker1></mat-datepicker>
+                                        </mat-form-field>
+
+
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Identification Number</mat-label>
+                                            <input matInput aria-invalid="false"
+                                                (keypress)="keyPressAlphaNumeric($event)"
+                                                [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['Identification'].errors}"
+                                                aria-invalid="false" formControlName="Identification">
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmpPersonalDetail.controls['Identification'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpPersonalDetail.controls['Identification'].errors['required']">
+                                                Please Enter Identification Marks
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Marital Status</mat-label>
+                                            <select matNativeControl formControlName="matrial" id="">
+
+                                                <option *ngFor="let mst of MaritalStatusdata" value={{mst.M_STATUS_ID}}>
+                                                    {{mst.M_STATUS_NAME}} </option>
+                                            </select>
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmpPersonalDetail.controls['matrial'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpPersonalDetail.controls['matrial'].errors['required']">
+                                                Please Enter Marital Status
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+
+
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Blood Group</mat-label>
+                                            <select matNativeControl formControlName="Blood_Group" id="">
+                                                <option *ngFor="let mst of BloodGroupdata" value={{mst.B_GRP_ID}}>
+                                                    {{mst.B_GRP_NAME}} </option>
+                                            </select>
+
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Social Category</mat-label>
+                                            <select matNativeControl formControlName="CATEGORY_ID">
+                                                <option *ngFor="let mst of getCasteCategoryData"
+                                                    value={{mst.CATEGORY_ID}}>
+                                                    {{mst.CAT_NAME_EN}} </option>
+                                            </select>
+
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Father Name</mat-label>
+                                            <input matInput formControlName="fname"
+                                                (keypress)="this.global.keyPressAlphaNumericWithCharactersAlpha($event)"
+                                                [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['fname'].errors}">
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmpPersonalDetail.controls['fname'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpPersonalDetail.controls['fname'].errors['required']">
+                                                Please Enter Father Name
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+
+
+                                
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Mother Name</mat-label>
+                                            <input matInput
+                                                (keypress)=" this.global.keyPressAlphaNumericWithCharactersAlpha($event)"
+                                                aria-invalid="false" formControlName="mname"
+                                                [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['mname'].errors}">
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmpPersonalDetail.controls['mname'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpPersonalDetail.controls['mname'].errors['required']">
+                                                Please Enter Mother Name
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Spouse Name</mat-label>
+                                            <input matInput
+                                                [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['sname'].errors}"
+                                                aria-invalid="false" formControlName="sname">
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmpPersonalDetail.controls['sname'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpPersonalDetail.controls['sname'].errors['required']">
+                                                Please Enter Spouse Name
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row mt-2">
+
+
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Mobile Number</mat-label>
+                                            <input matInput formControlName="mobileno" pattern="[6789][0-9]{9}"
+                                                (keypress)="this.global.numberOnly($event)" maxlength="10"
+                                                [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['mobileno'].errors}">
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmpPersonalDetail.controls['mobileno'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpPersonalDetail.controls['mobileno'].errors['required']">
+                                                Please Enter Mobile Number
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Email ID </mat-label>
+                                            <input matInput type="email" formControlName="emailid"
+                                                placeholder="your-name@provider.com"
+                                                [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['emailid'].errors}">
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmpPersonalDetail.controls['emailid'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpPersonalDetail.controls['emailid'].errors['required']">
+                                                Please Enter Email ID
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Home District</mat-label>
+                                            <select matNativeControl formControlName="district_id">
+                                                <option *ngFor="let mst of Districtdata" value={{mst.DIST_ID}}>
+                                                    {{mst.DIST_NAME_EN}} </option>
+
+                                            </select>
+
+
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+
+
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Home Town </mat-label>
+                                            <select matNativeControl formControlName="Home_Town"
+                                                [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['Home_Town'].errors}">
+                                                <option value="1">Jaipur</option>
+                                                <option value="2">Sikar</option>
+                                                <option value="3">Ajmer</option>
+                                            </select>
+                                        
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmpPersonalDetail.controls['Home_Town'].errors"
+                                        class="text-danger">
+                                        <div
+                                            *ngIf="submitted && EmpPersonalDetail.controls['Home_Town'].errors['required']">
+                                            Please Enter Home Town
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Nationality</mat-label>
+                                            <select matNativeControl formControlName="nationalitys">
+                                                <option value="Indian" selected>Indian</option>
+                                            </select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-radio-group aria-label="Select an option">
+
+                                        </mat-radio-group>
+                                        <mat-form-field #field floatLabel="always" appearance="outline"
+                                            class="full-width radio-container">
+                                            <mat-label>Disability Status</mat-label>
+                                            <input matInput style="display:none" required>
+                                            <mat-radio-group #group class="flex-wrap" formControlName="Disability_Status">
+                                                <mat-radio-button value="0" >Yes</mat-radio-button>
+                                                <mat-radio-button value="1" class="ml-5" >No</mat-radio-button>
+                                            </mat-radio-group>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+
+
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field #field floatLabel="always" appearance="outline"
+                                            class="full-width radio-container">
+                                            <mat-label>Belongs to Minority</mat-label>
+                                            <input matInput style="display:none" required>
+                                            <mat-radio-group #group class="flex-wrap" formControlName="Belongs_Minority">
+                                                <mat-radio-button value="0"  >Yes</mat-radio-button>
+                                                <mat-radio-button value="1" class="ml-5">No</mat-radio-button>
+                                            </mat-radio-group>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Type of Disability</mat-label>
+                                            <select matNativeControl formControlName="Disability">
+                                                <option *ngFor="let mst of DisabilityTypeData"
+                                                    value={{mst.DISABILITY_ID}}>
+                                                    {{mst.DIS_TYPE_EN}} </option>
+                                            </select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+
+                                      
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label> Percentage of Disability</mat-label>
+                                            <input matInput formControlName="Percentage_Disability"
+                                                [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['Percentage_Disability'].errors}">
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmpPersonalDetail.controls['Percentage_Disability'].errors"
+                                                    class="text-danger">
+                                                    <div
+                                                        *ngIf="submitted && EmpPersonalDetail.controls['Percentage_Disability'].errors['required']">
+                                                        Please select Percentage of Disability
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+
+
+
+                                <div class="text-center mt-4">
+                                    <button class="btn btn-primary ms-2" mat-raised-button
+                                        (click)=" onSubmit()">Save</button>
+                                    <button class="btn btn-success ms-2" mat-raised-button> Next</button>
+                                </div>
+
+                                <!-- <button class="btn btn-danger ms-2" mat-raised-button> Cancel</button> -->
+                        <app-emp-button></app-emp-button>
+                            </form>
+                        </fieldset>
+                    </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

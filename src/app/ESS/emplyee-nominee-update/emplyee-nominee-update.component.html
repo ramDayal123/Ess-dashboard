@@ -1,0 +1,151 @@
+
+<div class="content-wrapper">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+                <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+            </div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+                
+                <div class="row d-flex align-item-center mt-3">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li _ngcontent-usv-c162="" class="breadcrumb-item"><a>Landing
+                                    Page</a> </li>
+                            <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a routerLink="/Ess-Req">My
+                                    Request</a> </li>
+                                <li aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                                    Employee's Nominee Update</li>
+                            </ol>
+                            
+                        </nav>
+                    </div>
+                    <!-- <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 py-2">
+                        <button class="btn btn-primary w-100" routerLink="/ESS-Dashboard" mat-raised-button color="primary">Back To Dashboard</button>
+                    </div>     -->
+                </div>
+                <app-username></app-username>
+                <section class="content viewbottom">
+                    <div class="light-blue-bg p-4">
+                        
+                        <fieldset class="p-3">
+                            <legend class="mb-3">Employee's Nominee Update</legend>
+                            <form [formGroup]="updateNominee" (ngSubmit)="onSubmit()">
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Scheme Name</mat-label>
+                                            <select matNativeControl formControlName="schemeName" (change)="getschemeName($event)">
+                                                <option *ngFor="let mst of GetSchemeData" value={{mst.SCH_NOM_ID}}> {{mst.SCH_NOM_NAME_EN}} </option>
+                                            </select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Nominee</mat-label>
+                                            <select matNativeControl formControlName="schemeName" (change)="getnominationName($event)">
+                                                <option *ngFor="let mst of Relationlist" value={{mst.FAMILY_MEM_ID}}> {{mst.NAME_EN}} </option>
+                                            </select>
+                                        </mat-form-field>
+
+                                        <!-- <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Nomination Name</mat-label>
+                                            <select matNativeControl  formControlName="nominationName" (change)="getnominationName($event)" >                                               
+                                                <option value="1">Avya</option>
+                                            </select>
+                                        </mat-form-field> -->
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Relation</mat-label>                                          
+                                            <select matNativeControl  formControlName="relationName" (change)="getrelationName($event)">
+                                                <option *ngFor="let mst of FamilyRelation" value={{mst.RELATION_ID}}> {{mst.R_NAME_EN}} </option>
+                                            </select>
+                                            <mat-hint></mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Percentage Share</mat-label>
+                                            <input matInput formControlName="percentShare">
+                                            <mat-hint></mat-hint>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-1 choosefile">
+                                        
+                                            <div (click)="uploadFile.click()">
+                                                <button class="btn btn-secondary ms-2" mat-raised-button color="secondary">Choose File</button>
+                                                <input #uploadFile (change)="selectFile($event)" maxFileSize="50000"  formControlName="file" type='file' style="display:none"/> 
+                                                <mat-label class="ms-2">{{selectedFiles}}</mat-label>
+                                             </div>
+                                              <!-- <div class="custom-file">
+                                              <input type="file" class="form-control custom-file-input" multiple 
+                                              id="file" (change)="onFileChange($event)" maxFileSize="50000"  formControlName="file" >
+                                            </div> -->
+                                        
+                                        <label><span class="text-red"> <b>Note :- </b>File extension must be pdf and file size
+                                            must be upto 5MB.</span> </label>
+                                        </div>
+                                    <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-1">
+                                        <input type="file" class="form-control p-1 choosefile p-2"
+                                        id="file" maxFileSize="50000">
+                                        <label for=""><span class="text-red"> Note:File extension .pdf and file size is
+                                                less than 5MB.</span> </label>
+                                    </div> -->
+
+
+                                </div>
+
+                                <div class="d-flex justify-content-center mt-2">
+                                    <button class="btn btn-primary" mat-raised-button color="primary">Update</button>
+                                    <!-- <button class="btn btn-secondary ms-2" mat-raised-button color="warn" routerLink="/ESS-Req">Back</button> -->
+                                </div>
+                            </form>
+                       
+                        <div class="col-md-12 mt-5 text-center">
+                            <table class="table mt-5" style="overflow-x:auto;">
+                                <thead class="thead-primary">
+                                    <tr>
+                                        <th>Sr.NO.</th>
+                                        <th>Req ID</th>
+                                        <th>Scheme</th>
+                                        <th>Nominee</th>
+                                        <th>Relation</th>
+                                        <th>Percent</th>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let obj of ESSDataLoadNominee ;let i = index">
+                                        <th>{{i+1}}</th>
+                                        <td>{{obj.REQUEST_ID}}</td>
+                                        <td>{{obj.REQUESTED_JSON.schemeName}}</td>
+                                        <td>{{obj.REQUESTED_JSON.nominationName}}</td>
+                                        <td>{{obj.REQUESTED_JSON.relationName}}</td>
+                                        <td>{{obj.REQUESTED_JSON.percentShare}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </fieldset>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<script>
+    function openmenu() {
+      document.getElementById("Sidenav").style.width = "285px";
+    }
+
+    function closemenu() {
+      document.getElementById("Sidenav").style.width = "0";
+    }
+  </script>

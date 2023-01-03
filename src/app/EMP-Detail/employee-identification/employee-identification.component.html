@@ -1,0 +1,97 @@
+
+<div class="content-wrapper">
+    
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+              <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+          </div>
+          <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+              
+              <div class="row d-flex align-item-center mt-2">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="content-wrapper">
+                <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+                    <ol _ngcontent-usv-c162="" class="breadcrumb">
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"><a _ngcontent-usv-c162="" routerlink="/login"
+                                ng-reflect-router-link="/login" href="/login">Landing Page</a>
+                        </li>
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a _ngcontent-usv-c162="" routerlink="/main"
+                                ng-reflect-router-link="/main" href="/main">Dashboard</a> </li>
+                        <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page"
+                            class="breadcrumb-item active">
+                            Employee Service Details</li>
+                    </ol>
+                </nav>
+                <app-username></app-username>
+
+                <section class="content">
+                    <div class="light-blue-bg p-4">
+                        <fieldset class="p-3">
+                            <legend class="mb-3">Employee Basic Information</legend>
+                            <form [formGroup]="EmployeeIdentification">
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Aadhaar Ref No</mat-label>
+                                            <input matInput  maxlength="16" formControlName="addharRef" (keypress)="this.global.numberOnly($event)" [ngClass]="{'is-invalid':submitted && EmployeeIdentification.controls['addharRef'].errors}" >                                         
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmployeeIdentification.controls['addharRef'].errors"
+                                        class="text-danger">
+                                        <div
+                                          *ngIf="submitted && EmployeeIdentification.controls['addharRef'].errors['required']">
+                                          Please Enter Aadhaar Ref No
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label> Passport No</mat-label>
+                                            <input matInput formControlName="PassportNo" (keypress)="this.global.numberOnly($event)" maxlength="11"  [ngClass]="{'is-invalid':submitted && EmployeeIdentification.controls['PassportNo'].errors}" >                                          
+                                        </mat-form-field>
+
+                                        <div *ngIf="submitted && EmployeeIdentification.controls['PassportNo'].errors"
+                                        class="text-danger">
+                                        <div
+                                          *ngIf="submitted && EmployeeIdentification.controls['PassportNo'].errors['required']">
+                                          Please Enter Passport No
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>PAN No</mat-label>
+                                            <input matInput  formControlName="pancardNo"  (keypress)="this.global.keyPressAlphaNumeric($event)"  maxlength="10" [ngClass]="{'is-invalid':submitted && EmployeeIdentification.controls['pancardNo'].errors}">                                           
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && EmployeeIdentification.controls['pancardNo'].errors"
+                                        class="text-danger">
+                                        <div
+                                          *ngIf="submitted && EmployeeIdentification.controls['pancardNo'].errors['required']">
+                                          Please Enter PAN No
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                </div>
+
+
+                             
+
+                              <div class="text-center mt-4">
+                                <button class="btn btn-primary ms-2" mat-raised-button (click)=" onSubmit()">Save</button>
+                                <button class="btn btn-success ms-2" mat-raised-button> Next</button>
+                              </div>
+
+                                <!-- <button class="btn btn-danger ms-2" mat-raised-button> Cancel</button> -->
+                           <app-emp-button></app-emp-button>
+                            </form>
+                        </fieldset>
+                    </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

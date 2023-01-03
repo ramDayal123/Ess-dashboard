@@ -1,0 +1,224 @@
+
+<div class="content-wrapper">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+                <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+            </div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+                
+                <div class="row d-flex align-item-center mt-3">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+                            <ol _ngcontent-usv-c162="" class="breadcrumb">
+                                <li _ngcontent-usv-c162="" class="breadcrumb-item"><a 
+                                        routerLink="/landing-page">Landing Page</a> </li>
+                                <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a  routerLink="/ESS-Dashboard"
+                                        >Dashboard</a> </li>
+                                <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                                    Pay Entitlement</li>
+                            </ol>
+                            
+                        </nav>
+                    </div>
+                    <!-- <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 py-2">
+                        <button class="btn btn-primary w-100" routerLink="/ESS-Dashboard" mat-raised-button color="primary">Back To Dashboard</button>
+                    </div>     -->
+                </div>
+                <app-username></app-username>
+                <section class="content viewbottom">
+                    <div class="light-blue-bg p-4">            
+                        <fieldset class="p-3">
+                            <legend class="mb-3">Pay Entitlement</legend>
+                            <form  [formGroup]="EmpSelfDetailForm" (ngSubmit)="onSubmit()" >  
+                                
+                                    <div class="row mt-2"> 
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Pay Commission</mat-label>
+                                                <input matInput placeholder="Placeholder">
+                                                <mat-hint>Hint</mat-hint>
+                                              </mat-form-field>
+                                        </div>  
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Pay Band Scale</mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">test file</option>
+                                                    <option value="employeeType-2">text</option>                                             
+                                                </select>
+                                                <mat-hint>Hint</mat-hint>
+                                              </mat-form-field>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Grade Pay</mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">test file</option>
+                                                    <option value="employeeType-2">text</option>                                             
+                                                </select>
+                                                <mat-hint>Hint</mat-hint>
+                                              </mat-form-field>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>HoA</mat-label>
+                                                <input matInput placeholder="Placeholder">
+                                                <mat-hint>Hint</mat-hint>
+                                              </mat-form-field>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>DA Rate</mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">test file</option>
+                                                    <option value="employeeType-2">text</option>                                             
+                                                </select>
+                                                <mat-hint>Hint</mat-hint>
+                                              </mat-form-field>
+                                        </div>
+                                       
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Govt Quarter</mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">test file</option>
+                                                    <option value="employeeType-2">text</option>                                             
+                                                </select>
+                                                <mat-hint>Hint</mat-hint>
+                                              </mat-form-field>
+                                        </div>
+                                       
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>HRA Rate</mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="employeeType-1">test file</option>
+                                                    <option value="employeeType-2">text</option>                                             
+                                                </select>
+                                                <mat-hint>Hint</mat-hint>
+                                              </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2"> 
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                                            <div class="Row">
+                                                <label style=" font-weight: bold;">
+                                                    <div class="section-title">
+                                                        <p>Earning Component</p>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <table class="table table-striped">                    
+                                                <thead class="thead-primary">
+                                                    <tr>
+                                                      <th scope="col">Sr.No.</th>
+                                                      <th scope="col">Pay Head Name</th>
+                                                      <th scope="col">Pay Head Value</th>                     		
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    <tr>
+                                                      <th scope="row">1</th>
+                                                      <td>Basic Pay/Band Pay</td>
+                                                      <td>24574</td>                                                    
+                                                     </tr> <tr>
+                                                      <th scope="row">2</th>
+                                                      <td>Grade Pay</td>
+                                                      <td>4200</td>                                                   
+                                                    </tr>
+                                                  </tbody>
+                                              </table>
+                                        </div>  
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                                            <div class="Row">
+                                                <label style=" font-weight: bold;">
+                                                    <div class="section-title">
+                                                        <p>Deduction Component</p>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <table class="table table-striped">                    
+                                                <thead class="thead-primary">
+                                                  <tr>
+                                                    <th scope="col">Sr.No.</th>
+                                                    <th scope="col">Pay Head Name</th>
+                                                    <th scope="col">Pay Head Value</th>                     		
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>GPF</td>
+                                                    <td>24574</td>                                                    
+                                                   </tr> <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>SI</td>
+                                                    <td>4200</td>                                                   
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                        </div>  
+                                        <div class="row mt-2"> 
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>Net Earning</mat-label>
+                                                    <input matInput placeholder="Placeholder" readonly>
+                                                    
+                                                  </mat-form-field>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>Net Deduction</mat-label>
+                                                    <input matInput placeholder="Placeholder"readonly>
+                                                  
+                                                  </mat-form-field>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                <mat-form-field class="w-100" appearance="outline" readonly>
+                                                    <mat-label>Net Salary</mat-label>
+                                                    <input matInput placeholder="Placeholder"readonly>                                                   
+                                                  </mat-form-field>
+                                            </div>
+                                        </div>
+                                     
+                                    </div>
+                                <div class="float-center">
+                                    <button class="btn btn-warning ms-2" mat-raised-button color="secondary" routerLink="/employee-bank-details">Back</button>
+                                    <button class="btn btn-secondary ms-2" mat-raised-button color="secondary" routerLink="/employee-documents">Next</button>
+                                </div>
+
+                            </form>
+                               
+                        </fieldset>
+
+                        <div class="row mt-2">
+                         <div class="float-center">
+                            <button class="btn btn-primary" mat-raised-button color="primary">Save</button>
+                            <button class="btn btn-secondary ms-2" mat-raised-button color="secondary">Refresh</button> 
+                            <button class="btn btn-warning ms-2" mat-raised-button color="secondary">Modify</button>
+                        
+                        </div>
+                        </div>
+                        <div class="row mt-2">                          
+                            <div class="float-center">
+                                <app-epm-general-button></app-epm-general-button>                         
+                            </div>
+                            </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<script>
+    function openmenu() {
+      document.getElementById("Sidenav").style.width = "285px";
+    }
+
+    function closemenu() {
+      document.getElementById("Sidenav").style.width = "0";
+    }
+  </script>

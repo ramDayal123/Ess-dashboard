@@ -1,0 +1,55 @@
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  .dashboardbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ .thead-primary{
+  background-color: #95c5f3d6;
+ 
+ } 
+ .thead-primary th:hover{
+ color: #fff;
+ 
+ }
+
+ .form-check {
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 1.5em;
+  margin-bottom: 0.125rem;
+}
+.float-center{
+  text-align: center !important;
+}
+.form-radio{
+  padding-right: 40px!important;
+}
+
+.form-group.button-top {
+  
+  margin-top: 30px;
+}
+@media only screen and (max-width: 600px) {
+  .form-group.button-top {
+
+      margin-top: 15px;
+  }
+}
+.button-tops {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.bg-light-blue p {
+  margin: 0 0 12px;
+  margin: 4px 5px 4px;
+  font-size: 18px;
+  left: 0;
+  display: flex;
+}
+.viewbottom{
+  padding-bottom: 180px;
+}

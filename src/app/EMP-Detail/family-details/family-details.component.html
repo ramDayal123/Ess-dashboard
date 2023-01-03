@@ -1,0 +1,210 @@
+<div class="content-wrapper">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+                <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+            </div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+                
+                <div class="row d-flex align-item-center mt-2">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="content-wrapper">
+                <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+                    <ol _ngcontent-usv-c162="" class="breadcrumb">
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"><a _ngcontent-usv-c162=""
+                                routerlink="/login" ng-reflect-router-link="/login" href="/login">Landing Page</a>
+                        </li>
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a _ngcontent-usv-c162=""
+                                routerlink="/main" ng-reflect-router-link="/main" href="/main">Dashboard</a> </li>
+                        <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page"
+                            class="breadcrumb-item active">
+                            Family Details</li>
+                    </ol>
+                </nav>
+                <app-username></app-username>
+
+                <section class="content viewbottom">
+                    <div class="light-blue-bg p-4">
+                        <fieldset class="p-3">
+                            <legend class="mb-3"> Family Details</legend>
+                            <form [formGroup]="FamilyDetails">
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Name</mat-label>
+                                            <input matInput formControlName="name"
+                                            required="" data-validation-required-message="This field is required"
+                                            aria-invalid="false" ngModel pattern="[a-zA-Z ]*">
+                                        </mat-form-field>
+                                     
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Relationship</mat-label>
+                                            <select matNativeControl  formControlName="relationship">
+                                                <option *ngFor="let mst of FamilyRelationdata" value={{mst.RELATION_ID}}>
+                                                    {{mst.R_NAME_EN}} </option>
+                                            </select>
+                                
+                                        </mat-form-field>
+                                       
+                                    </div>
+
+                                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-label>Date of Birth  </mat-label>
+                                        <input matInput [matDatepicker]="picker1"  formControlName="dob" >
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1></mat-datepicker>
+                                    </mat-form-field>
+                                       
+                                    </div>
+
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Gender</mat-label>
+                                            <select matNativeControl formControlName="Gender">
+                                                <option *ngFor="let mst of Genderdata" value={{mst.GEN_ID}}>
+                                                    {{mst.GEN_NAME_EN}} </option>
+                                            </select>
+                                        </mat-form-field>
+                                       
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Marital Status</mat-label>
+                                            <select matNativeControl formControlName="Maritalstatus">
+                                                <option *ngFor="let mst of MaritalStatusdata" value={{mst.M_STATUS_ID}}>
+                                                    {{mst.M_STATUS_NAME}} </option>
+                                            </select>
+                                        </mat-form-field>
+                                       
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field #field floatLabel="always" class="w-100" appearance="outline"
+                                        class="full-width radio-container">
+                                        <mat-label>Physically Disability</mat-label>
+                                        <input matInput style="display:none" required>
+                                        <mat-radio-group #group class="flex-wrap" formControlName="PhysicallyDisability">
+                                            <mat-radio-button  value="0" >Yes</mat-radio-button>
+                                            <mat-radio-button  class="ml-5 mr-4" value="1" >No</mat-radio-button>
+                                        </mat-radio-group>
+                                    </mat-form-field>
+                                    </div>
+
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Percentage Of Disability</mat-label>
+                                            <input matInput required="" aria-invalid="false" ngModel pattern="[a-zA-Z ]*" formControlName="PercentageDisability">
+                                        </mat-form-field>
+                                       
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field #field floatLabel="always" class="w-100" appearance="outline"
+                                        class="full-width radio-container">
+                                        <mat-label>Dependent</mat-label>
+                                        <input matInput style="display:none" required>
+                                        <mat-radio-group #group class="flex-wrap" formControlName="Dependent">
+                                            <mat-radio-button  value="0" >Yes</mat-radio-button>
+                                            <mat-radio-button  class="ml-5" value="1"  >No</mat-radio-button>
+                                        </mat-radio-group>
+                                    </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field #field floatLabel="always" class="w-100" appearance="outline"
+                                        class="full-width radio-container">
+                                        <mat-label>Employed</mat-label>
+                                        <input matInput style="display:none" required>
+                                        <mat-radio-group #group class="flex-wrap" formControlName="Employed">
+                                            <mat-radio-button value="0" >Yes</mat-radio-button>
+                                            <mat-radio-button  class="ml-5 " value="1" >No</mat-radio-button>
+                                        </mat-radio-group>
+                                    </mat-form-field>
+                                    </div>
+                                    
+
+                                </div>
+                                <legend class="mb-3 mt-4"> Nominee Details</legend>
+                                <div class="Row">
+                                    
+									<table class="table table-border">
+										<thead>
+											<tr>
+												<th>Schemes</th>
+												<th>Name of Nominee</th>
+												<th>Relation</th>
+												<th>share %</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td> <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>Schemes</mat-label>
+                                                    <select matNativeControl  formControlName="Schemes">
+                                                        <option *ngFor="let mst of SchemeTypedata"
+                                                        value={{mst.SCH_NOM_ID}}>
+                                                        {{mst.SCH_NOM_NAME_EN}} </option>
+                                                      </select>
+                                                </mat-form-field>
+                                               </td>
+												
+												<td>
+                                                    <mat-form-field class="w-100" appearance="outline">
+                                                        <mat-label> Name of Nominee</mat-label>
+                                                        <input matInput  formControlName="NameNominee">
+                                                    </mat-form-field>
+												
+												</td>
+
+                                                <td> <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>Relation</mat-label>
+                                                    <select matNativeControl formControlName="Relation" >
+                                                        <option *ngFor="let mst of FamilyRelationdata"
+                                                            value={{mst.RELATION_ID}}>
+                                                            {{mst.R_NAME_EN}} </option>
+                                                      </select>
+                                                </mat-form-field>
+                                               </td>
+                                               <td>
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label> share </mat-label>
+                                                    <input matInput formControlName="share" >
+                                                </mat-form-field>
+                                            
+                                            </td>
+												<td>
+													<button class="btn btn-success">Add</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+                            
+
+
+                              <div class="text-center mt-4">
+                                <button class="btn btn-primary ms-2" mat-raised-button (click)=" OnSubmit()">Save</button>
+                                <button class="btn btn-success ms-2" mat-raised-button> Next</button>
+                              </div>
+
+                                <!-- <button class="btn btn-danger ms-2" mat-raised-button> Cancel</button> -->
+                          <app-emp-button></app-emp-button>
+                            </form>
+                        </fieldset>
+                    </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

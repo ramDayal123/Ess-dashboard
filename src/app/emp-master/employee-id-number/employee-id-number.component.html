@@ -1,0 +1,119 @@
+
+<div class="content-wrapper">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+                <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+            </div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+                
+                <div class="row d-flex align-item-center mt-3">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+                            <ol _ngcontent-usv-c162="" class="breadcrumb">
+                                <li _ngcontent-usv-c162="" class="breadcrumb-item"><a 
+                                        routerLink="/landing-page">Landing Page</a> </li>
+                                <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a  routerLink="/ESS-Dashboard"
+                                        >Dashboard</a> </li>
+                                <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                                    Employee Id Number</li>
+                            </ol>
+                            
+                        </nav>
+                    </div>
+                    <!-- <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 py-2">
+                        <button class="btn btn-primary w-100" routerLink="/ESS-Dashboard" mat-raised-button color="primary">Back To Dashboard</button>
+                    </div>     -->
+                </div>
+                <app-username></app-username>
+                <section class="content">
+                    <div class="light-blue-bg p-4">            
+                        <fieldset class="p-3">
+                            <legend class="mb-3">Employee Id Number</legend>
+                            <form  [formGroup]="EmpSelfDetailForm" (ngSubmit)="onSubmit()" >  
+                                
+                                    <div class="row mt-2">   
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>PAN No</mat-label>
+                                                <input matInput placeholder="Placeholder" formControlName="Name">
+                                                <mat-hint>Hint</mat-hint>
+                                              </mat-form-field>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>AADHAAR Ref No</mat-label>
+                                                <input matInput placeholder="Placeholder">
+                                                <mat-hint>Hint</mat-hint>
+                                              </mat-form-field>
+                                        </div>
+                                       
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                            <mat-form-field  class="w-100" appearance="outline">
+                                            <mat-label>GRP/Pran Type  </mat-label>
+                                            <input matInput placeholder="Placeholder">
+                                            </mat-form-field>
+                                        </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>State Insurance Number</mat-label>
+                                                    <input matInput placeholder="Placeholder">
+                                                    <mat-hint>Hint</mat-hint>
+                                                  </mat-form-field>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>RGSH No</mat-label>
+                                                    <input matInput placeholder="Placeholder">
+                                                    <mat-hint>Hint</mat-hint>
+                                                  </mat-form-field>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                    <mat-label>Appointment Order No.</mat-label>
+                                                    <input matInput placeholder="Placeholder">
+                                                    <mat-hint>Hint</mat-hint>
+                                                  </mat-form-field>
+                                            </div>
+                                    </div>
+                                <div class="float-center">
+                                    <button class="btn btn-warning ms-2" mat-raised-button color="secondary" routerLink="/emp-gendetail">Back</button>
+                                    <button class="btn btn-secondary ms-2" mat-raised-button color="secondary" routerLink="/employee-date">Next</button>
+                                </div>
+
+                            </form>
+                               
+                        </fieldset>
+
+                        <div class="row mt-2">
+                         <div class="float-center">
+                            <button class="btn btn-primary" mat-raised-button color="primary">Save</button>
+                            <button class="btn btn-secondary ms-2" mat-raised-button color="secondary">Refresh</button> 
+                            <button class="btn btn-warning ms-2" mat-raised-button color="secondary">Modify</button>
+                        
+                        </div>
+                        </div>
+                        <div class="row mt-2">                          
+                            <div class="float-center">
+                                <app-epm-general-button></app-epm-general-button>                         
+                            </div>
+                            </div>
+                    </div>
+                      
+                       
+                </section>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<script>
+    function openmenu() {
+      document.getElementById("Sidenav").style.width = "285px";
+    }
+
+    function closemenu() {
+      document.getElementById("Sidenav").style.width = "0";
+    }
+  </script>

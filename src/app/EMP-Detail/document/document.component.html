@@ -1,0 +1,104 @@
+
+<div class="content-wrapper">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+                <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+            </div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+                
+                <div class="row d-flex align-item-center mt-2">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="content-wrapper">
+                <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+                    <ol _ngcontent-usv-c162="" class="breadcrumb">
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"><a _ngcontent-usv-c162=""
+                                routerlink="/login" ng-reflect-router-link="/login" href="/login">Landing Page</a>
+                        </li>
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a _ngcontent-usv-c162=""
+                                routerlink="/main" ng-reflect-router-link="/main" href="/main">Dashboard</a> </li>
+                        <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page"
+                            class="breadcrumb-item active">
+                            Employee Documents</li>
+                    </ol>
+                </nav>
+                <app-username></app-username>
+
+                <section class="content">
+                    <div class="light-blue-bg p-4">
+                        <fieldset class="p-3">
+                            <legend class="mb-3"> Employee Documents</legend>
+                            <form [formGroup]="EmpDocument">
+                             
+                                <div class="Row">
+                                    
+									<table class="table table-border">
+										<thead>
+											<tr>
+												<th>Sr no</th>
+												<th>Documents Types</th>
+												<th>Description</th>
+												<th>Choose File</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>
+                                                    <mat-form-field class="w-100" appearance="outline">
+                                                        <mat-label>Documents Types </mat-label>
+                                                        <select matNativeControl   formControlName="documennt">
+                                                            <option *ngFor="let mst of DocumentTypedata" value={{mst.DOC_TYPE_ID}}>
+                                                              {{mst.TYPE_NAME}}
+                                                            </option>
+                                                          </select>
+                                                    </mat-form-field>
+
+												
+												</td>
+												<td>
+                                                    <mat-form-field class="w-100" appearance="outline">
+                                                        <mat-label>Description</mat-label>
+                                                        <input matInput formControlName="mname" formControlName="Description">
+                                                    </mat-form-field>
+												
+												</td>
+
+												<td>
+													<!-- <input type="file" class="form-control" formControlName="file" /> -->
+                                                    
+                                                    <div (click)="uploadFile.click()" class="mt-2">
+                                                        <button class="btn btn-secondary ms-2" mat-raised-button color="secondary">Choose File</button>
+                                                        <input type="file" #uploadFile (change)="selectFile($event)" style="display: none" formControlName="file">
+                                                        <mat-label class="ms-2">{{selectedFiles}}</mat-label>
+                                                    </div>
+												</td>
+												<td>
+													<button class="btn btn-success">Add</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+                        
+
+                              <div class="text-center mt-4">
+                                <button class="btn btn-primary ms-2" mat-raised-button (click)=" OnSubmit()">Save</button>
+                                <button class="btn btn-success ms-2" mat-raised-button> Next</button>
+                              </div>
+
+                                <!-- <button class="btn btn-danger ms-2" mat-raised-button> Cancel</button> -->
+                            <app-emp-button></app-emp-button>
+                            </form>
+                        </fieldset>
+                    </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+mat-focused{
+    outline: none;
+}
+  .dashboardbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .viewbottom{
+    padding-bottom: 180px;
+  }

@@ -1,0 +1,113 @@
+
+<div class="content-wrapper">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+                <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+            </div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+                
+                <div class="row d-flex align-item-center mt-2">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="content-wrapper">
+                <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+                    <ol _ngcontent-usv-c162="" class="breadcrumb">
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"><a _ngcontent-usv-c162=""
+                                routerlink="/login" ng-reflect-router-link="/login" href="/login">Landing Page</a>
+                        </li>
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a _ngcontent-usv-c162=""
+                                routerlink="/main" ng-reflect-router-link="/main" href="/main">Dashboard</a> </li>
+                        <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page"
+                            class="breadcrumb-item active">
+                            Employee Bank Details</li>
+                    </ol>
+                </nav>
+                <app-username></app-username>
+
+                <section class="content">
+                    <div class="light-blue-bg p-4">
+                        <fieldset class="p-3">
+                            <legend class="mb-3"> Employee Bank Details</legend>
+                            <form [formGroup]="bankDetails">
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Bank Account Number</mat-label>
+                                            <input matInput formControlName="BankAccount" [ngClass]="{'is-invalid':submitted && bankDetails.controls['BankAccount'].errors}">
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && bankDetails.controls['BankAccount'].errors" class="text-danger">
+                                            <div *ngIf="submitted && bankDetails.controls['BankAccount'].errors['required']">
+                                                Please Enter Bank Account Number
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Ifsc Code </mat-label>
+                                            <input matInput  formControlName="ifscCode"[ngClass]="{'is-invalid':submitted && bankDetails.controls['ifscCode'].errors}">
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && bankDetails.controls['ifscCode'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="submitted && bankDetails.controls['ifscCode'].errors['required']">
+                                            Please Enter Ifsc Code
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                    <mat-form-field class="w-100" appearance="outline">
+                                        <mat-label>Bank Name</mat-label>
+                                        <select matNativeControl  formControlName="bankName" (change)="getBankBranch($event)">
+                                            <option *ngFor="let mst of BankData" value={{mst.BANK_ID}}> {{mst.BANK_NAME_EN}} </option>
+                                        </select>
+                                        
+
+
+                                    </mat-form-field>
+                                       
+                                    </div>
+
+
+                                 
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Branch Name</mat-label>
+                                            <select matNativeControl  formControlName="branchName">
+                                                <option *ngFor="let mst of BankBranchData" value={{mst.BANK_BRANCH_ID}}> {{mst.BRANCH_NAME_EN}} </option>
+                                            </select>
+                                            
+    
+    
+                                        </mat-form-field>
+                                       
+                                    </div>
+
+                                 
+
+                                 
+                                </div>
+
+                            
+
+
+                              <div class="text-center mt-4">
+                                <button class="btn btn-primary ms-2" mat-raised-button (click)=" OnSubmit()">Save</button>
+                                <button class="btn btn-success ms-2" mat-raised-button> Next</button>
+                              </div>
+
+                                <!-- <button class="btn btn-danger ms-2" mat-raised-button> Cancel</button> -->
+                             <app-emp-button></app-emp-button>
+                            </form>
+                        </fieldset>
+                    </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

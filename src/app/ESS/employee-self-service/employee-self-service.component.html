@@ -1,0 +1,339 @@
+
+<div class="content-wrapper">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+                <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+            </div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+                
+                <div class="row d-flex align-item-center mt-3">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li _ngcontent-usv-c162="" class="breadcrumb-item"><a>Landing
+                                    Page</a> </li>
+                            <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a routerLink="/Ess-Req">My
+                                    Request</a> </li>
+                                <li aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                                    Employee's Service Detail</li>
+                            </ol>
+                            
+                        </nav>
+                    </div>
+                    <!-- <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 py-2">
+                        <button class="btn btn-primary w-100" routerLink="/ESS-Dashboard" mat-raised-button color="primary">Back To Dashboard</button>
+                    </div>     -->
+                </div>
+                <app-username></app-username>
+                <section class="content viewbottom">
+                    <div class="light-blue-bg p-4">
+                        <fieldset class="p-3">
+                            <legend class="mb-3">Employee's Service Details</legend>
+                            <form [formGroup]="EmpSelfDetailForm" (ngSubmit)="onSubmit()">
+
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Name</mat-label>
+                                            <input matInput formControlName="Name" (keypress)="keypress($event)">
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['Name'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['Name'].errors['required']">
+                                                    Please Enter Name
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label> Father's Name</mat-label>
+                                            <input matInput formControlName="fatherName" (keypress)="keypress($event)">
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['fatherName'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['fatherName'].errors['required']">
+                                                    Please Enter Father's Name
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Mother's Name</mat-label>
+                                            <input matInput formControlName="motherName" (keypress)="keypress($event)">
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['motherName'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['motherName'].errors['required']">
+                                                    Please Enter Mother's Name
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                              
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Gender</mat-label>                                            
+                                            <select matNativeControl  formControlName="Gender_Data" (change)="getGenderName($event)">
+                                                <option *ngFor="let mst of Genderdata" value={{mst.GEN_ID}}>{{mst.GEN_NAME_EN}} </option>
+                                            </select>
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['Gender_Data'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['Gender_Data'].errors['pattern']">
+                                                    Please select Gender
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field  class="w-100" appearance="outline" floatLabel="always">
+                                        <mat-label>Date of Birth</mat-label>
+<!-- 
+   <input autocomplete="off" matInput class="container_100 form-control"
+                      [matDatepicker]="fDATE_OF_APPOINTMENT" (click)="fDATE_OF_APPOINTMENT.open()"
+                      (focus)="fDATE_OF_APPOINTMENT.open()" name="DATE_OF_APPOINTMENT" formControlName="DATE_OF_APPOINTMENT"
+                      [max]="maxDate" (keydown)="onKeydown($event)" (keyup)="onKeydown($event)" />
+                    <mat-datepicker #fDATE_OF_APPOINTMENT></mat-datepicker> -->
+
+                                        <input matInput [matDatepicker]="picker"(click)="picker.open()"
+                                        (focus)="picker.open()"formControlName="dob" name="dob" autocomplete="off" [max]="getToday()" readonly="">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                        <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['dob'].errors" class="text-danger">
+                                            <div *ngIf="submitted && EmpSelfDetailForm.controls['dob'].errors['required']">
+                                                Please select Date of Birth
+                                            </div>
+                                        </mat-error>
+                                         </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Social Category</mat-label>
+                                            <select matNativeControl  formControlName="Social_Category" (change)="getSocialCategory($event)">
+                                                <option *ngFor="let mst of CasteCategoryData" value={{mst.CATEGORY_ID}} > {{mst.CAT_NAME_EN}} </option>
+                                            </select>
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['Social_Category'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['Social_Category'].errors['pattern']">
+                                                    Please select Social Category
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Mobile Number</mat-label>
+                                            <input matInput formControlName="mobileNumber"maxlength="10" minlength="10">
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['mobileNumber'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['mobileNumber'].errors['required']">
+                                                    Mobile Number is Mandatory
+                                                </div>                                              
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Marital Status</mat-label>
+                                            <select matNativeControl  formControlName="Marital_Status"  (change)="getMaritalStatusname($event)">
+                                                <option *ngFor="let mst of MaritalStatusData" value={{mst.M_STATUS_ID}}> {{mst.M_STATUS_NAME}} </option>
+                                            </select>
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['Marital_Status'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['Marital_Status'].errors['pattern']">
+                                                    Please select Marital Status
+                                                </div>
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['Marital_Status'].errors['required']">
+                                                    Marital Status is Mandatory
+                                                </div> 
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Spouse Name</mat-label>
+                                            <input matInput formControlName="spouseName">
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['spouseName'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['spouseName'].errors['required']">
+                                                    Please Enter Spouse Name
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field #field floatLabel="always" appearance="outline" class="w-100">
+                                            <mat-label>Disabled</mat-label>
+                                            <input matInput style="display:none" name="disable" formControlName="disable"> 
+                                            <mat-radio-group #group class="flex-wrap" formControlName="disable">
+                                                <mat-radio-button value="Y" color="primary" (change)="onItemChange('1')">Yes</mat-radio-button>
+                                                <mat-radio-button value="N" color="primary" (change)="onItemChange('2')">No</mat-radio-button>
+                                            </mat-radio-group>
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['disable'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['disable'].errors['required']">
+                                                    Please select Yes/No
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Type of Disability</mat-label>
+                                            <select matNativeControl  formControlName="Disability_Type" >
+                                                <option *ngFor="let mst of DisabilityTypeData" value={{mst.DISABILITY_ID}}> {{mst.DIS_TYPE_EN}} </option>
+                                            </select>
+                                            <!-- <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['Disability_Type'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['Disability_Type'].errors['required']">
+                                                    Please select Disability Type
+                                                </div>
+                                            </mat-error> -->
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Persentage Of Disability</mat-label>
+                                            <input matInput formControlName="percentageDisability" >
+                                            <!-- <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['percentageDisability'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['percentageDisability'].errors['required']">
+                                                    Please Enter Persentage Of Disability
+                                                </div>
+                                            </mat-error> -->
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Height</mat-label>
+                                            <input matInput formControlName="height">
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['height'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['height'].errors['required']">
+                                                    Please Enter Height
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Blood Group</mat-label>
+                                            <select matNativeControl  formControlName="Blood_Group">
+                                                <option *ngFor="let mst of BloodGroupdata" value={{mst.B_GRP_ID}}> {{mst.B_GRP_NAME}} </option>
+                                            </select>
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['Blood_Group'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['Blood_Group'].errors['pattern']">
+                                                    Please select Blood Group
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Identification Mark</mat-label>
+                                            <input matInput formControlName="identificationMark">
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['identificationMark'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['identificationMark'].errors['required']">
+                                                    Please Enter Identification Mark
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>PAN No.</mat-label>
+                                            <input matInput formControlName="panNo">
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['panNo'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['panNo'].errors['required']">
+                                                    Please Enter PAN No.
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                                        <mat-form-field class="w-100" appearance="outline" floatLabel="always">
+                                            <mat-label>Email ID</mat-label>
+                                            <input matInput formControlName="emailID">
+                                            <mat-error *ngIf="submitted && EmpSelfDetailForm.controls['emailID'].errors" class="text-danger">
+                                                <div *ngIf="submitted && EmpSelfDetailForm.controls['emailID'].errors['required']">
+                                                    Please Enter Email ID
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button class="btn btn-primary" mat-raised-button color="primary">Save</button>
+                                    <button (click)="onreset()" type="button" class="btn btn-secondary ms-2" mat-raised-button
+                                        color="secondary">Refresh</button>
+                                    <button class="btn btn-secondary ms-2" mat-raised-button color="warn" routerLink="/ESS-Req">Back</button>
+                                </div>
+
+                            </form>
+
+                            <div class="row mt-3" >
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                   
+                                        <div class="light-blue-bg p-4">
+                                            
+                                                <!-- <legend class="mb-3">Employee's Service Details List</legend> -->
+                                    <div class="row mt-2 justify-content-center">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                        <div style="overflow-x:auto; width: 100%; display: block;">
+                    
+                                            <table class="table table-striped">
+                                                <thead class="thead-primary">
+                                                    <tr>
+                                                        <th scope="col">Sr. No.</th>
+                                                        <th scope="col">Req ID</th>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Father's Name</th>
+                                                        <th scope="col">Mother's Name</th>
+                                                        <th scope="col">Gender</th>
+                                                        <th scope="col">Date Of Birth</th>
+                                                        <th scope="col">Social Category</th>                                                  
+                                                        <th scope="col">Mobile Number</th>
+                                                        <th scope="col">Marital Status</th>
+                                                        <th scope="col">Spouse Name</th>
+                                                        <th scope="col">Disable</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let obj of Employeeselfservice ;let i = index">
+                                                        <th>{{i+1}}</th>
+                                                        <td>{{obj.REQUEST_ID}}</td>
+                                                        <td>{{obj.REQUESTED_JSON.name}}</td>
+                                                        <td>{{obj.REQUESTED_JSON.fatherName}}</td>
+                                                        <td>{{obj.REQUESTED_JSON.motherName}}</td>
+                                                        <td>{{obj.REQUESTED_JSON.genderName}}</td>
+                                                        <td>{{obj.REQUESTED_JSON.dob}}</td>
+                                                        <td>{{obj.REQUESTED_JSON.socialCategoryName}}</td>
+                                                        <td>{{obj.REQUESTED_JSON.mobileNumber}}</td>
+                                                        <td>{{obj.REQUESTED_JSON.maritalStatusName}}</td>
+                                                        <td>{{obj.REQUESTED_JSON.spouseName}}</td>
+                                                        <td>{{obj.REQUESTED_JSON.disable}}</td>
+                                                      
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        </div>
+                            
+                                    </div>
+                                            
+                                        </div>
+                                  
+                                </div>
+                            </div>
+                            
+                           
+                     </fieldset>
+                    </div>
+
+                 
+                        
+                  
+                </section>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<script>
+    function openmenu() {
+      document.getElementById("Sidenav").style.width = "285px";
+    }
+
+    function closemenu() {
+      document.getElementById("Sidenav").style.width = "0";
+    }
+  </script>

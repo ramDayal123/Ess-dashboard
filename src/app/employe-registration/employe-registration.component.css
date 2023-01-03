@@ -1,0 +1,22 @@
+
+button.mat-focus-indicator.btn.btn-primary.Search-btn-position.mat-raised-button.mat-button-base.mat-primary {
+    position: absolute;
+}
+
+.mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+    padding: 0;
+  }
+  
+  .mat-toolbar-single-row button {
+    width: 100px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .optionbutton {
+    margin-left: 20px;
+  }

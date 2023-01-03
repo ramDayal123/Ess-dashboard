@@ -1,0 +1,206 @@
+
+<div class="content-wrapper">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-block p-0">
+                <app-sidemenu class="sticky-sidemenu"></app-sidemenu>
+            </div>
+            <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+                
+                <div class="row d-flex align-item-center mt-2">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="content-wrapper">
+                <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+                    <ol _ngcontent-usv-c162="" class="breadcrumb">
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"><a _ngcontent-usv-c162=""
+                                routerlink="/login" ng-reflect-router-link="/login" href="/login">Landing Page</a>
+                        </li>
+                        <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a _ngcontent-usv-c162=""
+                                routerlink="/main" ng-reflect-router-link="/main" href="/main">Dashboard</a> </li>
+                        <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page"
+                            class="breadcrumb-item active">
+                            Employee Date</li>
+                    </ol>
+                </nav>
+                <app-username></app-username>
+
+                <section class="content">
+                    <div class="light-blue-bg p-4">
+                        <fieldset class="p-3">
+                            <legend class="mb-3">Employee Date</legend>
+                            <form [formGroup]="saveEmpdate">
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Appointment Order No. </mat-label>
+                                            <input matInput [matDatepicker]="picker1"  formControlName="JoiningDateService"  [ngClass]="{'is-invalid':submitted && saveEmpdate.controls['JoiningDateService'].errors}" >
+                                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker1></mat-datepicker>
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && saveEmpdate.controls['JoiningDateService'].errors"
+                                            class="text-danger">
+                                            <div *ngIf="submitted && saveEmpdate.controls['JoiningDateService'].errors['required']">
+                                                Please Enter Date of Join regular Service
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Date Of Present desgination</mat-label>
+                                            <input  matInput [matDatepicker]="picker2" formControlName="DatePresentdesgination" [ngClass]="{'is-invalid':submitted && saveEmpdate.controls['DatePresentdesgination'].errors}">
+                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker2 class="mat-piker"></mat-datepicker>
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && saveEmpdate.controls['DatePresentdesgination'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="submitted && saveEmpdate.controls['DatePresentdesgination'].errors['required']">
+                                            Please Enter Date Of Present desgination
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Date Joining Present DDO</mat-label>
+                                            <input matInput [matDatepicker]="picker3"
+                                            placeholder="DD/MM/YYYY" formControlName="DateJoiningPresentDDO" [ngClass]="{'is-invalid':submitted && saveEmpdate.controls['JoiningDateService'].errors}">
+                                        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker3 class="mat-piker"></mat-datepicker>
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && saveEmpdate.controls['JoiningDateService'].errors"
+                                            class="text-danger">
+                                            <div *ngIf="submitted && saveEmpdate.controls['JoiningDateService'].errors['required']">
+                                                Please Enter Date Joining Present DDO
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+
+                                
+                                 
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Date Confirmation</mat-label>
+                                            <input  matInput [matDatepicker]="picker4"
+                                             formControlName="DateConfirmation" [ngClass]="{'is-invalid':submitted && saveEmpdate.controls['DateConfirmation'].errors}">
+                                        <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker4 class="mat-piker"></mat-datepicker>
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && saveEmpdate.controls['DateConfirmation'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="submitted && saveEmpdate.controls['DateConfirmation'].errors['required']">
+                                            Please Enter Date Confirmation
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Annual Increment Opted Date</mat-label>
+                                            <input  matInput [matDatepicker]="picker5"
+                                           formControlName="IncrementOptedDate" [ngClass]="{'is-invalid':submitted && saveEmpdate.controls['IncrementOptedDate'].errors}">
+                                        <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker5 class="mat-piker"></mat-datepicker>
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && saveEmpdate.controls['IncrementOptedDate'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="submitted && saveEmpdate.controls['IncrementOptedDate'].errors['required']">
+                                            Please Enter Annual Increment Opted Date
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Superanuation Date</mat-label>
+                                            <input matInput [matDatepicker]="picker6"formControlName="SuperanuationDate" [ngClass]="{'is-invalid':submitted && saveEmpdate.controls['SuperanuationDate'].errors}">
+                                        <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker6 class="mat-piker"></mat-datepicker>
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && saveEmpdate.controls['SuperanuationDate'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="submitted && saveEmpdate.controls['SuperanuationDate'].errors['required']">
+                                            Please Enter Superanuation Date
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                
+                                 
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Joining / Charge Taken Date</mat-label>
+                                            <input  matInput [matDatepicker]="picker7"
+                                            placeholder="DD/MM/YYYY" formControlName="ChargeTakenDate"[ngClass]="{'is-invalid':submitted && saveEmpdate.controls['ChargeTakenDate'].errors}" >
+                                        <mat-datepicker-toggle matSuffix [for]="picker7"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker7 class="mat-piker"></mat-datepicker>
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && saveEmpdate.controls['ChargeTakenDate'].errors"
+                                            class="text-danger">
+                                            <div *ngIf="submitted && saveEmpdate.controls['ChargeTakenDate'].errors['required']">
+                                                Please Enter Joining / Charge Taken Date
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Joining Time</mat-label>
+                                            <input  matInput   type="time" formControlName="JoiningTime"[ngClass]="{'is-invalid':submitted && saveEmpdate.controls['JoiningTime'].errors}">
+                                      
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && saveEmpdate.controls['JoiningTime'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="submitted && saveEmpdate.controls['JoiningTime'].errors['required']">
+                                            Please Enter Joining Time
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Appointment Order Date</mat-label>
+                                            <input matInput [matDatepicker]="picker9"
+                                           formControlName="AppointmentOrderDate"[ngClass]="{'is-invalid':submitted && saveEmpdate.controls['AppointmentOrderDate'].errors}">
+                                        <mat-datepicker-toggle matSuffix [for]="picker9"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker9 class="mat-piker"></mat-datepicker>
+                                        </mat-form-field>
+                                        <div *ngIf="submitted && saveEmpdate.controls['AppointmentOrderDate'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="submitted && saveEmpdate.controls['AppointmentOrderDate'].errors['required']">
+                                            Please Enter Appointment Order Date
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                
+                                 
+                                </div>
+                         
+
+
+                       
+                          
+
+
+     
+
+
+                              <div class="text-center mt-4">
+                                <button class="btn btn-primary ms-2" mat-raised-button (click)=" OnSubmit()">Save</button>
+                                <button class="btn btn-success ms-2" mat-raised-button> Next</button>
+                              </div>
+
+                                <!-- <button class="btn btn-danger ms-2" mat-raised-button> Cancel</button> -->
+                             <app-emp-button></app-emp-button>
+                            </form>
+                        </fieldset>
+                    </div>
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
